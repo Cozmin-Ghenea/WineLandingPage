@@ -36,7 +36,9 @@ html{
     justify-content: center;
 }
 
-
+.change-nav{
+    background-color: #d50000;
+}
 .nav-link{
     font-size:1.5rem;
     color:#fff;
@@ -67,7 +69,9 @@ html{
 .nav-link:hover::before{
     left:110%
 }
-
+.nav-1{
+    background-color:##5d0000
+}
 .page-btn{
     position:fixed;
     z-index:100;

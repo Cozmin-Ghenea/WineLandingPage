@@ -4,13 +4,23 @@ let bool = true;
 const sections = document.querySelectorAll("section");
 const progress = document.querySelector(".progress h2");
 const circles = document.querySelectorAll(".circle");
+const navs = document.querySelectorAll(".nav-link");
 const menu = document.querySelector(".menu");
 const section1Wrapper= document.querySelector(".section-1-wrapper");
 const section5Wrapper= document.querySelector(".section-5-wrapper");
 
+
+
 section1Wrapper.style.transform = "scale(1)";
 
+const menuChanger = () =>{
+ 
+    Array.from(navs).forEach((nav) => {
+        nav.style.backgroundColor="transparent"
+    })
+    document.querySelector(`.nav-${counter2}`).style.backgroundColor="#5d0000"
 
+}
 
 
 const progressCounter = () =>{
@@ -19,8 +29,10 @@ const progressCounter = () =>{
     Array.from(circles).forEach((circle) => {
         circle.style.backgroundColor= "transparent";
     });
+
     document.querySelector(`.circle-${counter2}`).style.backgroundColor="#ddd"
 }
+   
 
 const pageController = () => {
     bool = true;
@@ -32,8 +44,10 @@ const pageController = () => {
         counter2= 1;
         section1Wrapper.style.transform='scale(1)';
         section5Wrapper.style.transform='scale(1.5)';
-        progressCounter()
+        progressCounter();
+        menuChanger();
         bool =false;
+    
       
     }
     if(counter1===-1){
@@ -47,11 +61,13 @@ const pageController = () => {
         counter2 = 5;
         section1Wrapper.style.transform='scale(1.5)';
         section5Wrapper.style.transform='scale(1)';
-        progressCounter()
+        progressCounter();
+        menuChanger();
         bool = false;
     }
    
-    progressCounter()
+    progressCounter();
+    menuChanger();
     return bool;
 }
 
@@ -68,10 +84,12 @@ if(deltaY){
 
 pageController();
 progressCounter();
+menuChanger();
 if (bool){
     (document.querySelector(`.section-${deltaY ? counter1 : counter2}`).style.left=`${deltaY ? "-100vw":"0"}`)
     document.querySelector(`.section-${deltaY ? counter1: counter2}-wrapper`).style.transform=`scale(${deltaY ? "1.5" : "1" })`;
     document.querySelector(`.section-${deltaY ? counter1 + 1: counter2 + 1}-wrapper`).style.transform=`scale(${deltaY ? "1" : "1.5" })`
+   
 }
 
 })
